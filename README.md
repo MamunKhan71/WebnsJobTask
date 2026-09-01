@@ -1,4 +1,4 @@
-# Teamwork — Team Task System
+# Teamwork - Team Task System
 
 A task-tracking tool for a team of 8–15 people who share a body of work and have outgrown a spreadsheet. Anyone can see what the team is working on, find a specific item in seconds, move work through stages, and share a filtered view with a colleague — on a phone as well as a desktop.
 
