@@ -1,6 +1,6 @@
 # Teamwork - Team Task System
 
-A task-tracking tool for a team of 8–15 people who share a body of work and have outgrown a spreadsheet. Anyone can see what the team is working on, find a specific item in seconds, move work through stages, and share a filtered view with a colleague — on a phone as well as a desktop.
+A task-tracking tool for a team of 8–15 people who share a body of work and have outgrown a spreadsheet. Anyone can see what the team is working on, find a specific item in seconds, move work through stages, and share a filtered view with a colleague - on a phone as well as a desktop.
 
 Built for the WEBNS Technology Ltd. React Front-End practical exercise.
 
@@ -28,7 +28,7 @@ npm run preview   # serve the production build
 npm run lint      # eslint
 ```
 
-No database or environment variables are needed. The app ships with a generated seed dataset (~300 work items) served through an in-memory repository that simulates network latency — see [Data](#data) below.
+No database or environment variables are needed. The app ships with a generated seed dataset (~300 work items) served through an in-memory repository that simulates network latency - see [Data](#data) below.
 
 ## Stack
 
@@ -37,7 +37,7 @@ No database or environment variables are needed. The app ships with a generated 
 | Vite + React 19 + TypeScript        | Required stack; Vite for a zero-magic setup. TypeScript runs strict (`strict`, `noUncheckedIndexedAccess`, `noImplicitOverride`) with no `any` anywhere.                            |
 | Plain CSS: custom properties + CSS Modules | The brief scores CSS architecture directly. A hand-rolled token system (type scale, spacing rhythm, semantic color system) demonstrates that better than a utility framework. |
 | Hand-rolled Redux-style store       | Work-item data flows through typed actions → a pure reducer → selectors, dispatched via context. There is no API, so simulating the Redux pattern without the library keeps every line explainable. |
-| URL as filter state                 | Search, filters, sort, and pagination live in query params — shareable views and correct back-button behavior come for free.                                                        |
+| URL as filter state                 | Search, filters, sort, and pagination live in query params - shareable views and correct back-button behavior come for free.                                                        |
 | No component kit                    | Per the brief. Headless primitives (Radix) are used only where accessibility is genuinely hard (dialogs, menus).                                                                    |
 
 ## Architecture
@@ -61,14 +61,14 @@ src/
 
 Everything visual derives from CSS custom properties in `src/app/styles/tokens.css`:
 
-- **Type scale** — compact (12–22px): this is a tool people scan, not a marketing page.
-- **Spacing** — 4px rhythm throughout.
-- **Color** — cool-gray neutrals, an indigo accent, and semantic status tones (danger / warning / success / info / review). Every text color clears WCAG AA (4.5:1) against the background it sits on; each status has a strong tone for text and a subtle tone for badge fills.
-- **Interaction** — one consistent `:focus-visible` ring app-wide; 44px minimum touch targets; `prefers-reduced-motion` respected.
+- **Type scale** - compact (12–22px): this is a tool people scan, not a marketing page.
+- **Spacing** - 4px rhythm throughout.
+- **Color** - cool-gray neutrals, an indigo accent, and semantic status tones (danger / warning / success / info / review). Every text color clears WCAG AA (4.5:1) against the background it sits on; each status has a strong tone for text and a subtle tone for badge fills.
+- **Interaction** - one consistent `:focus-visible` ring app-wide; 44px minimum touch targets; `prefers-reduced-motion` respected.
 
 ## Data
 
-The app is frontend-only by design (see [What I didn't build](#what-i-didnt-build)). Data comes from a generated fixture of ~300 work items behind a small async repository that simulates latency and can simulate failure — so loading, error, and empty states are real, and a real backend could replace the module without touching the UI.
+The app is frontend-only by design (see [What I didn't build](#what-i-didnt-build)). Data comes from a generated fixture of ~300 work items behind a small async repository that simulates latency and can simulate failure - so loading, error, and empty states are real, and a real backend could replace the module without touching the UI.
 
 The seed data is deliberately messy, because a layout that only survives tidy rows would fall apart in production:
 
@@ -81,7 +81,7 @@ The seed data is deliberately messy, because a layout that only survives tidy ro
 
 A work item is: `id`, `title`, `description?`, `stage`, `priority`, `assignee?`, `dueDate?`, `tags`, `createdAt`, `updatedAt`.
 
-**Left out deliberately:** subtasks, comments, attachments, time estimates. A team fleeing an untrusted spreadsheet needs ownership, urgency, and progress visible at a glance — not a project-management suite. Every omitted field is one less thing to fill in when "new work can be added without ceremony."
+**Left out deliberately:** subtasks, comments, attachments, time estimates. A team fleeing an untrusted spreadsheet needs ownership, urgency, and progress visible at a glance - not a project-management suite. Every omitted field is one less thing to fill in when "new work can be added without ceremony."
 
 ### Workflow stages
 
@@ -89,23 +89,23 @@ Four: **Backlog → In Progress → In Review → Done**. Enough to answer "wher
 
 ## Product decisions
 
-- **A list, not a board.** The brief's core verbs are _find_, _narrow down_, and _spot what's urgent_ — scanning problems, which favor a dense vertical list. A Kanban board buries overdue items inside columns and collapses badly at 375px. Stage changes happen inline on each item instead of via drag-and-drop.
+- **A list, not a board.** The brief's core verbs are _find_, _narrow down_, and _spot what's urgent_ - scanning problems, which favor a dense vertical list. A Kanban board buries overdue items inside columns and collapses badly at 375px. Stage changes happen inline on each item instead of via drag-and-drop.
 - **First screen = the filtered list.** Search, stage tabs, and quick filters (overdue, unassigned, per-person) sit above the list; everything else waits behind a click. Item details open in a URL-addressable panel so the list never loses its place.
-- **Mobile is a different rendering, not a squeezed one.** Desktop gets dense rows; below tablet width the same items render as cards. Filters collapse into a bottom sheet — a row of dropdowns is not a mobile answer.
+- **Mobile is a different rendering, not a squeezed one.** Desktop gets dense rows; below tablet width the same items render as cards. Filters collapse into a bottom sheet - a row of dropdowns is not a mobile answer.
 - **Shareable by URL.** Search, filters, sort, and pagination serialize to query params. Copy the address bar, send it, and a colleague sees the same view.
 
 ## What I didn't build
 
 - **A backend.** The brief states a frontend-only submission scores full marks on everything being judged; the repository layer is shaped so PostgreSQL + an API could slot in behind it later.
 - **Drag-and-drop.** High interaction cost, poor keyboard/touch accessibility for the payoff. An explicit stage control is faster and works everywhere.
-- **Subtasks, comments, attachments** — see the data model rationale above.
+- **Subtasks, comments, attachments** - see the data model rationale above.
 
 ## Decisions I'm least confident about
 
 
-1. **List over board** — a hybrid (list with an optional board view) was the alternative; cut for scope within the four-hour budget.
-2. **Hand-rolled store over Redux Toolkit** — RTK would bring devtools and battle-tested patterns; the hand-rolled version keeps the dependency graph small and every line explainable.
+1. **List over board** - a hybrid (list with an optional board view) was the alternative; cut for scope within the four-hour budget.
+2. **Hand-rolled store over Redux Toolkit** - RTK would bring devtools and battle-tested patterns; the hand-rolled version keeps the dependency graph small and every line explainable.
 
 ## AI tooling
 
-Built with Claude Code as a pair programmer: scaffolding, first-pass component and styling implementation, and seed-data generation, working from a plan and design decisions agreed step by step. All code is reviewed, understood, and committed by hand — per the brief, every line can be explained and changed live.
+Built with Claude Code as a pair programmer: scaffolding, first-pass component and styling implementation, and seed-data generation, working from a plan and design decisions agreed step by step. All code is reviewed, understood, and committed by hand - per the brief, every line can be explained and changed live.
