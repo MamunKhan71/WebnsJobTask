@@ -35,7 +35,7 @@ No database or environment variables are needed. The app ships with a generated 
 | Choice                              | Why                                                                                                                                                                                 |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Vite + React 19 + TypeScript        | Required stack; Vite for a zero-magic setup. TypeScript runs strict (`strict`, `noUncheckedIndexedAccess`, `noImplicitOverride`) with no `any` anywhere.                            |
-| Plain CSS: custom properties + CSS Modules | The brief scores CSS architecture directly. A hand-rolled token system (type scale, spacing rhythm, semantic color system) demonstrates that better than a utility framework. |
+| Tailwind CSS v4 + custom `@theme` tokens | The brief bans component kits (they draw the screen for you) but explicitly accepts CSS frameworks. All design tokens — type scale, spacing rhythm, semantic color system — live in one `@theme` block in `global.css`, so utilities like `bg-surface` / `text-ink-muted` derive from the same single source of truth a hand-rolled system would have. |
 | Hand-rolled Redux-style store       | Work-item data flows through typed actions → a pure reducer → selectors, dispatched via context. There is no API, so simulating the Redux pattern without the library keeps every line explainable. |
 | URL as filter state                 | Search, filters, sort, and pagination live in query params - shareable views and correct back-button behavior come for free.                                                        |
 | No component kit                    | Per the brief. Headless primitives (Radix) are used only where accessibility is genuinely hard (dialogs, menus).                                                                    |
@@ -48,8 +48,8 @@ Feature-based structure: each feature owns everything it needs. Code moves to `s
 src/
   app/                  # App shell, providers, global styles, design tokens
     styles/
-      tokens.css        # Single source of truth: color, type, spacing, elevation
-      global.css        # Reset, focus-visible convention, reduced-motion support
+      global.css        # Tailwind @theme tokens (single source of truth for color,
+                        #   type, spacing, motion) + base layer conventions
   features/
     work-items/         # Core feature: list, item cards/rows, detail, stage moves,
                         #   store (actions/reducer/selectors), seed data, repository
@@ -59,7 +59,7 @@ src/
 
 ### Design system
 
-Everything visual derives from CSS custom properties in `src/app/styles/tokens.css`:
+Everything visual derives from the Tailwind `@theme` tokens in `src/app/styles/global.css`:
 
 - **Type scale** - compact (12–22px): this is a tool people scan, not a marketing page.
 - **Spacing** - 4px rhythm throughout.

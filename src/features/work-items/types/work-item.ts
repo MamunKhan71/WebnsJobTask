@@ -8,11 +8,6 @@ export interface Person {
   readonly name: string;
 }
 
-/**
- * A single piece of work. Assignee is a reference (not an embedded object)
- * so the model stays relational — the same shape a backend would return.
- * Dates are ISO strings to keep the state serializable.
- */
 export interface WorkItem {
   readonly id: string;
   readonly title: string;
@@ -20,10 +15,10 @@ export interface WorkItem {
   readonly stage: Stage;
   readonly priority: Priority;
   readonly assigneeId: string | null;
-  readonly dueDate: string | null; // "yyyy-mm-dd"
+  readonly dueDate: string | null; 
   readonly tags: readonly string[];
-  readonly createdAt: string; // ISO datetime
-  readonly updatedAt: string; // ISO datetime
+  readonly createdAt: string;
+  readonly updatedAt: string;
 }
 
 export interface NewWorkItemInput {
