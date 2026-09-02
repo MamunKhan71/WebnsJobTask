@@ -1,3 +1,5 @@
+export { AddWorkItemButton } from "./components/AddWorkItem";
+export { WorkItemDetail } from "./components/WorkItemDetail";
 export { WorkItemList } from "./components/WorkItemList";
 export { PRIORITIES, STAGES } from "./constants/workflow";
 export { PEOPLE } from "./data/people";

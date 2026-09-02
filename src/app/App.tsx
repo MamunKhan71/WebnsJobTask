@@ -1,6 +1,11 @@
 import type { ReactElement } from "react";
 import { Toolbar } from "../features/filters";
-import { WorkItemList, WorkItemsProvider } from "../features/work-items";
+import {
+  AddWorkItemButton,
+  WorkItemDetail,
+  WorkItemList,
+  WorkItemsProvider,
+} from "../features/work-items";
 
 export function App(): ReactElement {
   return (
@@ -23,12 +28,14 @@ export function App(): ReactElement {
             </svg>
           </span>
           <h1 className="text-lg font-semibold tracking-tight">Teamwork</h1>
+          <AddWorkItemButton />
         </div>
       </header>
       <main className="flex-1">
         <div className="mx-auto max-w-304 p-4 md:px-6">
           <Toolbar />
           <WorkItemList />
+          <WorkItemDetail />
         </div>
       </main>
     </WorkItemsProvider>

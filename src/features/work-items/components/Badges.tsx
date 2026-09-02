@@ -11,7 +11,7 @@ const priorityLabels = new Map<Priority, string>(
 const badgeBase =
   "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-[2px] text-xs font-medium leading-[1.4]";
 
-const stageStyles: Record<Stage, string> = {
+export const stageStyles: Record<Stage, string> = {
   backlog: "bg-neutral-subtle text-neutral",
   in_progress: "bg-info-subtle text-info",
   in_review: "bg-review-subtle text-review",

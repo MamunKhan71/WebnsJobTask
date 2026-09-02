@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { Dropdown, type DropdownOption } from "../../../shared/components/Dropdown";
 import {
   PEOPLE,
   PRIORITIES,
@@ -18,6 +19,22 @@ interface FilterFieldsProps {
   readonly onSort: (value: SortId) => void;
 }
 
+const assigneeOptions: readonly DropdownOption<string>[] = [
+  { value: "all", label: "Anyone" },
+  { value: "none", label: "Unassigned" },
+  ...PEOPLE.map((person) => ({ value: person.id, label: person.name })),
+];
+
+const priorityOptions: readonly DropdownOption<Priority | "all">[] = [
+  { value: "all", label: "Any" },
+  ...[...PRIORITIES].reverse().map((priority) => ({ value: priority.id, label: priority.label })),
+];
+
+const sortOptions: readonly DropdownOption<SortId>[] = SORT_OPTIONS.map((option) => ({
+  value: option.id,
+  label: option.label,
+}));
+
 export function FilterFields({
   params,
   layout,
@@ -28,62 +45,51 @@ export function FilterFields({
 }: FilterFieldsProps): ReactElement {
   const stacked = layout === "stacked";
 
-  const selectClass = `${
-    stacked ? "min-h-11 text-base" : "min-h-10 max-w-[180px] text-sm"
-  } truncate rounded-md border border-line bg-surface px-3 text-ink-secondary transition-colors hover:border-line-strong`;
+  const triggerClass = stacked
+    ? "inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-md border border-line bg-surface px-3 text-base text-ink-secondary transition-colors hover:border-line-strong"
+    : "inline-flex min-h-10 max-w-45 items-center justify-between gap-2 rounded-md border border-line bg-surface px-3 text-sm text-ink-secondary transition-colors hover:border-line-strong";
   const labelClass = stacked
     ? "text-xs font-semibold uppercase tracking-wider text-ink-muted"
     : "sr-only";
+  const fieldClass = stacked ? "flex flex-col gap-1" : "flex min-w-0 flex-col gap-1";
 
   return (
     <div className={stacked ? "flex flex-col gap-4" : "flex flex-wrap items-center gap-2"}>
-      <label className="flex min-w-0 flex-col gap-1">
+      <div className={fieldClass}>
         <span className={labelClass}>Assignee</span>
-        <select
-          className={selectClass}
+        <Dropdown
           value={params.assignee}
-          onChange={(event) => onAssignee(event.target.value)}
-        >
-          <option value="all">{stacked ? "Anyone" : "Assignee: anyone"}</option>
-          <option value="none">Unassigned</option>
-          {PEOPLE.map((person) => (
-            <option key={person.id} value={person.id}>
-              {person.name}
-            </option>
-          ))}
-        </select>
-      </label>
+          options={assigneeOptions}
+          ariaLabel="Filter by assignee"
+          triggerPrefix={stacked ? "" : "Assignee: "}
+          buttonClassName={triggerClass}
+          onChange={onAssignee}
+        />
+      </div>
 
-      <label className="flex min-w-0 flex-col gap-1">
+      <div className={fieldClass}>
         <span className={labelClass}>Priority</span>
-        <select
-          className={selectClass}
+        <Dropdown
           value={params.priority}
-          onChange={(event) => onPriority(event.target.value as Priority | "all")}
-        >
-          <option value="all">{stacked ? "Any priority" : "Priority: any"}</option>
-          {[...PRIORITIES].reverse().map((priority) => (
-            <option key={priority.id} value={priority.id}>
-              {priority.label}
-            </option>
-          ))}
-        </select>
-      </label>
+          options={priorityOptions}
+          ariaLabel="Filter by priority"
+          triggerPrefix={stacked ? "" : "Priority: "}
+          buttonClassName={triggerClass}
+          onChange={onPriority}
+        />
+      </div>
 
-      <label className="flex min-w-0 flex-col gap-1">
+      <div className={fieldClass}>
         <span className={labelClass}>Sort by</span>
-        <select
-          className={selectClass}
+        <Dropdown
           value={params.sort}
-          onChange={(event) => onSort(event.target.value as SortId)}
-        >
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.id} value={option.id}>
-              {stacked ? option.label : `Sort: ${option.label}`}
-            </option>
-          ))}
-        </select>
-      </label>
+          options={sortOptions}
+          ariaLabel="Sort work items"
+          triggerPrefix={stacked ? "" : "Sort: "}
+          buttonClassName={triggerClass}
+          onChange={onSort}
+        />
+      </div>
 
       <button
         type="button"
