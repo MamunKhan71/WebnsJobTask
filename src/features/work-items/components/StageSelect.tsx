@@ -16,7 +16,7 @@ export function StageSelect({ item }: { item: WorkItem }): ReactElement {
       value={item.stage}
       options={stageOptions}
       ariaLabel={`Stage for "${item.title}"`}
-      buttonClassName={`inline-flex items-center gap-1.5 rounded-full border-0 py-0.5 pe-2 ps-2.5 text-xs font-medium transition-shadow hover:shadow-sm max-sm:min-h-9 ${stageStyles[item.stage]}`}
+      buttonClassName={`inline-flex items-center gap-1.5 rounded-full border-0 py-0.5 pe-2 ps-2.5 text-xs font-medium transition-shadow hover:shadow-sm max-sm:min-h-10 ${stageStyles[item.stage]}`}
       onChange={(stage) => void moveItemToStage(item, stage)}
     />
   );

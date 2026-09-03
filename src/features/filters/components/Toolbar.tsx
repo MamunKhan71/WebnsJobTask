@@ -7,6 +7,7 @@ import {
   type Stage,
 } from "../../work-items";
 import { useListParams } from "../hooks/useListParams";
+import { AttentionStrip } from "./AttentionStrip";
 import { FilterFields } from "./FilterFields";
 import { FilterSheet } from "./FilterSheet";
 import { SearchInput } from "./SearchInput";
@@ -79,6 +80,8 @@ export function Toolbar(): ReactElement {
           )}
         </button>
       </div>
+
+      <AttentionStrip />
 
       <div className="flex min-w-0 items-center justify-between gap-3">
         <StageTabs value={params.stage} counts={counts} onChange={setStage} />

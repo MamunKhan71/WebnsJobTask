@@ -131,6 +131,9 @@ export function WorkItemList(): ReactElement {
 
   return (
     <>
+      <p className="sr-only" aria-live="polite">
+        {visible.length} work items shown
+      </p>
       <div className={panelClass}>
         <div
           className="hidden gap-3 border-b border-line bg-sunken px-4 py-2 ps-4.75 text-xs font-semibold uppercase tracking-wider text-ink-muted md:grid md:grid-cols-[minmax(0,1fr)_200px_72px_104px_108px]"
