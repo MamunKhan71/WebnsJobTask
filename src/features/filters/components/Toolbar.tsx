@@ -116,7 +116,7 @@ export function Toolbar(): ReactElement {
           )}
           <button
             type="button"
-            className="min-h-11 flex-1 rounded-md bg-accent text-base font-medium text-white transition-colors hover:bg-accent-hover active:translate-y-px"
+            className="min-h-11 flex-1 rounded-lg btn-gradient text-base font-semibold text-white transition-[filter,transform] hover:brightness-110 active:translate-y-px"
             onClick={() => setSheetOpen(false)}
           >
             Done

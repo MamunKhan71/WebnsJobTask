@@ -13,7 +13,7 @@ export function App(): ReactElement {
       <header className="sticky top-0 z-10 border-b border-line bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-304 items-center gap-2 px-4 py-3 md:px-6">
           <span
-            className="grid size-6.5 place-items-center rounded-lg bg-linear-to-br from-[#6366f1] to-accent text-white shadow-sm"
+            className="grid size-7 place-items-center rounded-lg btn-gradient text-white shadow-glow"
             aria-hidden="true"
           >
             <svg viewBox="0 0 16 16" width="13" height="13">

@@ -8,12 +8,12 @@ import { WorkItemRow } from "./WorkItemRow";
 
 const SKELETON_ROWS = 8;
 
-const panelClass = "overflow-hidden rounded-lg border border-line bg-surface shadow-sm";
+const panelClass = "overflow-hidden rounded-xl border border-line bg-surface shadow-md";
 const stateBoxClass = "flex flex-col items-center gap-2 px-6 py-10 text-center";
 const stateTitleClass = "text-md font-semibold";
 const stateBodyClass = "max-w-[44ch] text-sm text-ink-secondary";
 const primaryButtonClass =
-  "mt-3 min-h-11 rounded-md bg-accent px-5 text-sm font-medium text-white transition-colors hover:bg-accent-hover active:translate-y-px";
+  "mt-3 min-h-11 rounded-lg btn-gradient px-5 text-sm font-semibold text-white shadow-glow transition-[filter,transform] hover:brightness-110 active:translate-y-px";
 
 function LoadingState(): ReactElement {
   return (

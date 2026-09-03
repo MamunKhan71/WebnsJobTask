@@ -2,19 +2,19 @@
 
 
 @theme {
-  --color-page: #f4f5f7;
+  --color-page: #f6f5fa;
   --color-surface: #ffffff;
-  --color-sunken: #eceef1;
-  --color-line: #d9dce1;
-  --color-line-strong: #b7bcc4;
-  --color-ink: #1a1f27;
+  --color-sunken: #eeedf5;
+  --color-line: #e2e0ec;
+  --color-line-strong: #b9b6cc;
+  --color-ink: #1c1a27;
   --color-ink-secondary: #4b5563;
   --color-ink-muted: #5f6875;
 
-  --color-accent: #3730c4;
-  --color-accent-hover: #2c26a3;
-  --color-accent-subtle: #eceafd;
-  --color-focus: #4f46e5;
+  --color-accent: #6d28d9;
+  --color-accent-hover: #5b21b6;
+  --color-accent-subtle: #f0ebfd;
+  --color-focus: #7c3aed;
 
   --color-danger: #b3261e;
   --color-danger-subtle: #fdecea;
@@ -39,12 +39,15 @@
   --text-lg: 1.125rem;
   --text-xl: 1.375rem;
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
-  --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06);
-  --shadow-md: 0 2px 8px rgb(16 24 40 / 0.1);
-  --shadow-lg: 0 8px 32px rgb(16 24 40 / 0.16);
+  /* Softer, rounder, with violet-tinted elevation */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --shadow-sm: 0 1px 3px rgb(60 42 120 / 0.08);
+  --shadow-md: 0 4px 16px rgb(60 42 120 / 0.1);
+  --shadow-lg: 0 12px 40px rgb(60 42 120 / 0.18);
+  --shadow-glow: 0 4px 14px rgb(109 40 217 / 0.35);
 
   --animate-row-in: row-in 280ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
   --animate-shimmer: shimmer 1.4s ease infinite;
@@ -95,9 +98,21 @@
   }
 }
 
+/* The brand gradient, used for every primary action so they read as one family. */
+@utility btn-gradient {
+  background-image: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+
 @layer base {
   body {
     background-color: var(--color-page);
+    /* Faint violet wash at the top — reads as "app", costs no contrast */
+    background-image: radial-gradient(
+      1100px 380px at 50% -120px,
+      rgb(124 58 237 / 0.07),
+      transparent
+    );
+    background-repeat: no-repeat;
     color: var(--color-ink);
     font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;

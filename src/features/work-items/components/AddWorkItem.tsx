@@ -90,7 +90,7 @@ export function AddWorkItemButton(): ReactElement {
     <>
       <button
         type="button"
-        className="ms-auto inline-flex min-h-10 items-center gap-1.5 rounded-md bg-accent px-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-accent-hover active:translate-y-px"
+        className="ms-auto inline-flex min-h-10 items-center gap-1.5 rounded-lg btn-gradient px-3.5 text-sm font-semibold text-white shadow-glow transition-[filter,transform] hover:brightness-110 active:translate-y-px"
         onClick={() => setOpen(true)}
       >
         <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
@@ -205,7 +205,7 @@ export function AddWorkItemButton(): ReactElement {
             </button>
             <button
               type="submit"
-              className="min-h-10 rounded-md bg-accent px-4 text-sm font-medium text-white transition-colors hover:bg-accent-hover active:translate-y-px disabled:opacity-50"
+              className="min-h-10 rounded-lg btn-gradient px-4 text-sm font-semibold text-white transition-[filter,transform] hover:brightness-110 active:translate-y-px disabled:opacity-50"
               disabled={pending || form.title.trim() === ""}
             >
               {pending ? "Adding…" : "Add item"}

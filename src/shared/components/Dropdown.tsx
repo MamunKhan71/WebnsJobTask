@@ -149,7 +149,7 @@ export function Dropdown<T extends string>({
           id={listId}
           role="listbox"
           aria-label={ariaLabel}
-          className={`absolute top-full z-20 mt-1 max-h-64 w-max min-w-full max-w-64 animate-pop overflow-y-auto rounded-md border border-line bg-surface py-1 shadow-md ${
+          className={`absolute top-full z-20 mt-1 max-h-64 w-max min-w-full max-w-64 animate-pop overflow-y-auto rounded-lg border border-line bg-surface py-1.5 shadow-lg ${
             align === "end" ? "right-0 origin-top-right" : "left-0 origin-top-left"
           }`}
         >

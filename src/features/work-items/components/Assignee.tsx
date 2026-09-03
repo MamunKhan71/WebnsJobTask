@@ -26,7 +26,9 @@ export function Assignee({ person }: { person: Person | null }): ReactElement {
     <span className="inline-flex min-w-0 items-center gap-2 text-sm text-ink-secondary">
       <span
         className="inline-flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold text-white"
-        style={{ backgroundColor: `hsl(${hueFor(person.id)} 45% 38%)` }}
+        style={{
+          backgroundImage: `linear-gradient(135deg, hsl(${hueFor(person.id)} 62% 50%), hsl(${(hueFor(person.id) + 45) % 360} 62% 38%))`,
+        }}
         aria-hidden="true"
       >
         {getInitials(person.name)}

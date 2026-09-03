@@ -27,7 +27,7 @@ function getPageItems(page: number, pageCount: number): readonly (number | "gap"
 }
 
 const pageButtonClass =
-  "inline-flex min-h-9 min-w-9 items-center justify-center rounded-md border border-transparent px-2 text-sm tabular-nums text-ink-secondary transition-colors enabled:hover:border-line enabled:hover:bg-surface enabled:active:translate-y-px disabled:opacity-40 aria-[current=page]:border-accent aria-[current=page]:bg-accent aria-[current=page]:font-medium aria-[current=page]:text-white max-sm:min-h-11 max-sm:min-w-11 max-sm:border-line max-sm:bg-surface";
+  "inline-flex min-h-9 min-w-9 items-center justify-center rounded-md border border-transparent px-2 text-sm tabular-nums text-ink-secondary transition-colors enabled:hover:border-line enabled:hover:bg-surface enabled:active:translate-y-px disabled:opacity-40 aria-[current=page]:border-transparent aria-[current=page]:btn-gradient aria-[current=page]:font-semibold aria-[current=page]:text-white max-sm:min-h-11 max-sm:min-w-11 max-sm:border-line max-sm:bg-surface";
 
 export function Pagination({
   page,

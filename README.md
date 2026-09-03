@@ -75,7 +75,7 @@ Everything visual derives from the Tailwind `@theme` tokens in `src/app/styles/g
 
 - **Type scale** - compact (12–22px): this is a tool people scan, not a marketing page.
 - **Spacing** - 4px rhythm throughout.
-- **Color** - cool-gray neutrals, an indigo accent, and semantic status tones (danger / warning / success / info / review). Every text color clears WCAG AA (4.5:1) against the background it sits on; each status has a strong tone for text and a subtle tone for badge fills.
+- **Color** - violet-tinted neutrals, a violet brand accent (with a violet→indigo gradient reserved for primary actions), and semantic status tones (danger / warning / success / info / review). Every text color clears WCAG AA (4.5:1) against the background it sits on; each status has a strong tone for text and a subtle tone for badge fills.
 - **Interaction** - one consistent `:focus-visible` ring app-wide; 44px minimum touch targets; `prefers-reduced-motion` respected.
 
 ### Accessibility

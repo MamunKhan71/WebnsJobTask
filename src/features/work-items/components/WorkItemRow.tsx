@@ -29,7 +29,7 @@ export function WorkItemRow({
 
   return (
     <li
-      className={`relative grid animate-row-in gap-2 border-b border-line border-s-[3px] border-s-transparent bg-surface px-4 py-3 transition-colors last:border-b-0 hover:bg-[#f8f9fb] data-[priority=high]:border-s-[#d97706] data-[priority=urgent]:border-s-danger md:min-h-13 md:items-center md:gap-3 md:py-2 ${rowGridMobile} ${rowGridDesktop}`}
+      className={`relative grid animate-row-in gap-2 border-b border-line border-s-[3px] border-s-transparent bg-surface px-4 py-3 transition-colors last:border-b-0 hover:bg-[#faf9fe] data-[priority=high]:border-s-[#d97706] data-[priority=urgent]:border-s-danger md:min-h-13 md:items-center md:gap-3 md:py-2 ${rowGridMobile} ${rowGridDesktop}`}
       data-priority={item.priority}
       style={{ animationDelay: `${Math.min(index, 16) * 24}ms` }}
     >
